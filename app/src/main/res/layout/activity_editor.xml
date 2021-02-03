@@ -1,0 +1,834 @@
+<!-- Layout for the editor -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <!-- Layout for the editor -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#05D6CCCC"
+        tools:context=".EditorActivity">
+
+        <!-- Overview category -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#FFFFFF"
+            android:orientation="horizontal">
+
+            <!-- Label -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="24dp"
+                android:text="OVERVIEW"
+                android:textColor="#000000" />
+
+            <!-- Input fields -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:paddingLeft="4dp">
+
+
+                <!-- Name field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/inputLayoutClientName"
+                    android:layout_marginTop="32dp"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_name"
+                        android:background="@android:color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fadeScrollbars="true"
+                        android:paddingBottom="16dp"
+                        android:fontFamily="sans-serif-black"
+                        android:hint="@string/hint_name"
+                        android:inputType="textCapWords" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Address field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/inputLayoutDeliveryAddress"
+                    android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:background="@android:color/transparent"
+                    android:layout_height="wrap_content"
+                    android:hint="Delivery address"
+                    android:fontFamily="sans-serif-black"
+                    android:paddingBottom="16dp"
+                    android:inputType="textImeMultiLine" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!-- Dress style field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/inputLayoutClothSytle"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_style"
+                        android:fontFamily="sans-serif-black"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:hint="@string/hint_style"
+                        android:layout_marginBottom="20dp"
+                        android:inputType="textCapWords" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!-- Gender category -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="16dp"
+                android:text="@string/category_gender"
+                android:textColor="@color/colorAccent" />
+
+
+
+                <!-- Gender drop-down spinner -->
+                <Spinner
+                    android:id="@+id/spinner_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:paddingRight="16dp"
+                    android:spinnerMode="dropdown" />
+
+                <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:id="@+id/message"
+                    android:layout_weight="1"
+                android:text="@string/send_sms"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:layout_weight="1"
+                    android:id="@+id/msg"
+                    android:text="SMS 2"/>
+
+
+        </LinearLayout>
+
+
+        <!-- Measurement category -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="#FFFFFF"
+            android:orientation="horizontal">
+
+            <!-- Label -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="24dp"
+                android:text="MOBILE"
+                android:textColor="#F5030009" />
+
+            <!-- Input fields -->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingLeft="8dp">
+
+                <!--Dialer -->
+                <ImageButton
+                    android:id="@+id/dial1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/call"
+                    android:backgroundTint="#30A5DF"
+                    android:padding="16dp" />                        android:fontFamily="sans-serif-black"
+
+
+
+                <!-- Phone number field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/number1"
+                        android:layout_width="match_parent"
+                        android:inputType="phone"
+                        android:background="#FFFFFF"
+                        android:fontFamily="sans-serif-condensed"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="36dp"
+                        android:digits="01234567890*+-.#"
+                        android:hint="Phone" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <!-- Measurement category -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="horizontal">
+
+            <!-- Label -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="24dp"
+                android:text="MOBILE"
+                android:textColor="#CC040A00" />
+
+
+            <!-- Input fields -->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingLeft="4dp">
+
+
+                <!--Dialer -->
+                <ImageButton
+                    android:id="@+id/dial2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:padding="12dp"
+                    android:backgroundTint="@color/editorColorPrimaryDark"
+                    android:background="@drawable/call" />
+
+                <!-- Phone number field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/number2"
+                        android:background="#FFFFFF"
+                        android:layout_width="match_parent"
+                        android:fontFamily="sans-serif-condensed"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="36dp"
+                        android:inputType="phone"
+                        android:digits="01234567890*+-.#"
+                        android:hint="Phone" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/containst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#FFFFFF"
+            android:orientation="horizontal">
+
+            <!-- Label -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="24dp"
+                android:paddingTop="16dp"
+                android:text="MAIL"
+                android:textColor="#E8070200" />
+
+
+            <!-- Input fields -->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingLeft="4dp">
+
+                <!-- Email address field -->
+                <ImageButton
+                    android:id="@+id/mail1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:padding="12dp"
+                    android:background="@drawable/email"
+                    android:backgroundTint="#3B45E4" />
+
+                <!-- Email address field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="casual"
+                    android:layout_marginLeft="36dp"
+                    android:hint="Email"
+                    android:background="#FFFFFF"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    <!-- Female measurement category -->
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:background="#FFFFFF"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Label -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingTop="16dp"
+            android:padding="24dp"
+            android:text="@string/category_measurement"
+            android:textColor="#000000" />
+
+
+        <!-- Input fields -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:paddingLeft="4dp">
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!-- Boss field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_boss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="18dp"
+                    android:background="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="Boss"
+                    android:inputType="phone"
+                    android:digits="01234567890*+-.#" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Waist field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_waist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="Waist"
+                    android:paddingBottom="18dp"
+                    android:background="#FFFFFF"
+                    android:inputType="phone"
+                    android:digits="01234567890*+-.#" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Hip field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_hip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="Hip"
+                    android:paddingBottom="18dp"
+                    android:background="#FFFFFF"
+                    android:inputType="phone"
+                    android:digits="01234567890*+-.#" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Shoulder field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_shoulder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="Shoulder"
+                    android:inputType="phone"
+                    android:paddingBottom="18dp"
+                    android:background="#FFFFFF"
+                    android:digits="01234567890*+-.#"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Short Sleeve length field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_shortsleevelength"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingBottom="18dp"
+                    android:background="#FFFFFF"
+                    android:hint="Short Sleeve Length"
+                    android:inputType="phone"
+                    android:digits="01234567890*+-.#" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Short Sleeve length field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_longleevelength"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="Long Sleeve Length"
+                    android:paddingBottom="18dp"
+                    android:background="#FFFFFF"
+                    android:inputType="phone"
+                    android:digits="01234567890*+-.#" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Short Sleeve length field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_roundtop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="Top"
+                    android:paddingBottom="18dp"
+                    android:background="#FFFFFF"
+                    android:inputType="phone"
+                    android:digits="01234567890*+-.#" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Short Sleeve length field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_skirtlength"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="Skirt Length"
+                    android:paddingBottom="18dp"
+                    android:background="#FFFFFF"
+                    android:inputType="phone"
+                    android:digits="01234567890*+-.#" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Short Sleeve length field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_blouselength"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="Blouse Length"
+                    android:inputType="phone"
+                    android:paddingBottom="18dp"
+                    android:background="#FFFFFF"
+                    android:digits="01234567890*+-.#"
+                    android:textColor="@color/colorAccent2" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Male measurement category -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal">
+
+    <!-- Label -->
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingTop="16dp"
+        android:text="Male measurement"
+        android:textColor="@color/colorPrimaryDark" />
+
+
+    <!-- Input fields -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:paddingLeft="4dp">
+
+        <!-- Kaftan field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_kaftanlength"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="Kaftan Length"
+            android:inputType="phone"
+            android:paddingBottom="18dp"
+            android:background="#FFFFFF"
+            android:digits="01234567890*+-.#"
+            android:paddingTop="60dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Top length -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_maleTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="Top length"
+            android:paddingBottom="18dp"
+            android:background="#FFFFFF"
+            android:inputType="phone"
+            android:digits="01234567890*+-.#" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Neck field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_neck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="Neck"
+            android:paddingBottom="18dp"
+            android:background="#FFFFFF"
+            android:inputType="phone"
+            android:digits="01234567890*+-.#" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Shoulder field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_maleshoulder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="Shoulder"
+            android:paddingBottom="18dp"
+            android:background="#FFFFFF"
+            android:inputType="phone"
+            android:digits="01234567890*+-.#" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Short Sleeve length field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_maleshortsleevelength"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:paddingBottom="18dp"
+            android:background="#FFFFFF"
+            android:hint="Short sleeve length"
+            android:inputType="phone"
+            android:digits="01234567890*+-.#"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Long Sleeve length field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_malelongleevelength"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="Long sleeve length"
+            android:inputType="phone"
+            android:paddingBottom="18dp"
+            android:background="#FFFFFF"
+            android:digits="01234567890*+-.#" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Chest length field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_chest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="Chest"
+            android:inputType="phone"
+            android:paddingBottom="18dp"
+            android:background="#FFFFFF"
+            android:digits="01234567890*+-.#" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Belly length field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_belly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="Belly"
+            android:paddingBottom="18dp"
+            android:background="#FFFFFF"
+            android:inputType="phone"
+            android:digits="01234567890*+-.#"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Trouser length field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_trouserlength"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="Trouser Length"
+            android:paddingBottom="18dp"
+            android:background="#FFFFFF"
+            android:inputType="phone"
+            android:digits="01234567890*+-.#" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Thigh field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_thigh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="Thigh"
+            android:paddingBottom="18dp"
+            android:background="#FFFFFF"
+            android:inputType="phone"
+            android:digits="01234567890*+-.#"
+            android:textColor="@color/colorAccent2" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Waist field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_malewaist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="Waist"
+            android:paddingBottom="18dp"
+            android:background="#FFFFFF"
+            android:inputType="phone"
+            android:digits="01234567890*+-.#"
+            android:textColor="@color/colorAccent2" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Calf field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_calf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="Calf"
+            android:paddingBottom="18dp"
+            android:background="#FFFFFF"
+            android:inputType="phone"
+            android:digits="01234567890*+-.#"
+            android:textColor="@color/colorAccent2" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Ankle field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_ankle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="Ankle"
+            android:paddingBottom="18dp"
+            android:background="#FFFFFF"
+            android:inputType="phone"
+            android:digits="01234567890*+-.#" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--payment terms-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="18dp"
+                android:background="#FFFFFF"
+                android:paddingTop="16dp"
+                android:text="Payment terms"/>
+
+            <!-- Input fields -->
+            <LinearLayout
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:paddingBottom="16dp"
+                android:paddingLeft="4dp">
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <!-- Amount field -->
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:hint="Amount"
+                        android:paddingBottom="12dp"
+                        android:background="#FFFFFF"
+                        android:inputType="phone"
+                        android:digits="01234567890."/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <!-- Advance payment field -->
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/advance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:hint="advance payment"
+                        android:inputType="phone"
+                        android:paddingBottom="4dp"
+                        android:background="#FFFFFF"
+                        android:digits="01234567890." />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--balance payment-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:id="@+id/balance"
+                    android:layout_marginTop="10dp"
+                    tools:text="@string/balance_payment"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light-light"
+                        android:hint="date"
+                        android:paddingBottom="8dp"
+                        android:background="#FFFFFF"
+                        android:digits="0123456789./-"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>

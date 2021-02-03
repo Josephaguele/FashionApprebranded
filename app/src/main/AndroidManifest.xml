@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.android.fashionhome">
+
+
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupOnly="true"
+        android:icon="@drawable/pics"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".SplashScreen"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".CatalogActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".EditorActivity"
+            android:label="Add a Client"
+            android:parentActivityName=".CatalogActivity"
+            android:theme="@style/EditorTheme">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CatalogActivity" />
+        </activity>
+
+
+        <activity
+            android:name=".ClientDetails"
+            android:label="Client Details"
+            android:parentActivityName=".CatalogActivity"
+            android:theme="@style/EditorThemex">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CatalogActivity" />
+        </activity>
+
+
+        <!--Searchable-->
+        <activity
+            android:name=".SearchResultsActivity"
+            android:label="@string/menu_search"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+            <!--FOr backward compatibility of android-->
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+        </activity>
+
+        <!--Points to searchable activity so the whole app can invoke search. -->
+        <!-- This sets the searchResultsActivity as the default search provider for all Activities within the application-->
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value=".SearchResultsActivity"/>
+
+        <provider
+            android:name=".data.ClientProvider"
+            android:authorities="com.example.android.fashionhome"
+            android:exported="false" />
+    </application>
+
+</manifest>
