@@ -110,7 +110,6 @@ public class SearchResultsActivity extends AppCompatActivity implements LoaderMa
 
         // Initiate the Cursor Loader
         getLoaderManager().initLoader(0, null, this);
-
     }
 
 
@@ -202,17 +201,19 @@ public class SearchResultsActivity extends AppCompatActivity implements LoaderMa
     private MySearchResultRecyclerViewAdapter.OnListItemInteractionListener mListener =
             new MySearchResultRecyclerViewAdapter.OnListItemInteractionListener() {
                 @Override
-                public void onListItemClick(Uri selectedContent) {
+                public void onListItemClick(Uri selectedContent)
+                {
                     // TODO If an item is clicked, open an Activity
                     // to display further details.
+
+
+
                 }
             };
 
 
 
 }
-
-
 
 
 

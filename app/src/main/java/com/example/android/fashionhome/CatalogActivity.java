@@ -346,8 +346,8 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         // By default, the SearchView will be displayed as an icon that, when touched, expands to display
         // the search edit box. You can use the setIconifiedByDefault method to disable this and have
         // it always display as an edit box:
-        searchView.setIconifiedByDefault(false);
         searchView.setSubmitButtonEnabled(true);
+        //searchView.setIconifiedByDefault(false);
 
         return true;
     }
