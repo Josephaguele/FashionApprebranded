@@ -1,5 +1,6 @@
-package com.example.android.fashionhome;
+package com.chupaj.android.fashionhome;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.content.ActivityNotFoundException;
@@ -8,10 +9,13 @@ import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 
@@ -28,51 +32,46 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import static android.R.attr.button;
-import static com.example.android.fashionhome.R.id.number1;
-import static com.example.android.fashionhome.R.string.boss;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.ADVANCE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.AMOUNT;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_ANKLE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_BELLY;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_BLOUSE_LENGTH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CAFTAN_LENGTH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CALF;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CHEST;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_ADDRESS;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_BOSS;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_GENDER;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_NAME;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_NUMBER;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_NUMBER2;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_STYLE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_WAIST;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_DATE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_EMAIL;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALELONGSLEEVE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALESHORTSLEEVE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALE_SHOULDER;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_HIP;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_LS;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_SHOULDER;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_SS;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_NECK;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_SKIRT_LENGTH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_THIGH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TOP;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TOP_LENGTH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TROUSER_LENGTH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_WAIST;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.GENDER_FEMALE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.GENDER_MALE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.GENDER_UNKNOWN;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry._ID;
+import static com.chupaj.android.fashionhome.R.id.number1;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.ADVANCE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.AMOUNT;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_ANKLE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_BELLY;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_BLOUSE_LENGTH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CAFTAN_LENGTH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CALF;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CHEST;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_ADDRESS;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_BOSS;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_GENDER;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_NAME;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_NUMBER;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_NUMBER2;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_STYLE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_WAIST;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_DATE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_EMAIL;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALELONGSLEEVE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALESHORTSLEEVE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALE_SHOULDER;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_HIP;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_LS;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_SHOULDER;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_SS;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_NECK;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_SKIRT_LENGTH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_THIGH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TOP;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TOP_LENGTH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TROUSER_LENGTH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_WAIST;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.GENDER_FEMALE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.GENDER_MALE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.GENDER_UNKNOWN;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry._ID;
 
 public class EditorActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -145,13 +144,13 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         ImageButton button = (ImageButton) findViewById(R.id.dial1);
         ImageButton button2 = (ImageButton) findViewById(R.id.dial2);
         ImageButton button3 = (ImageButton) findViewById(R.id.mail1);
-        Button button4 = (Button)findViewById(R.id.message);
-        Button button5 = (Button)findViewById(R.id.msg);
-
+        Button button4 = (Button) findViewById(R.id.message);
+        Button button5 = (Button) findViewById(R.id.msg);
 
 
         // first call button
         button.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
                 EditText number1TextField = (EditText) findViewById(number1);
@@ -163,6 +162,16 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                     Intent callIntent = new Intent(Intent.ACTION_CALL);
                     callIntent.setData(Uri.parse(number1));
                     if (callIntent.resolveActivity(getPackageManager()) != null) {
+                        if (checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                            // TODO: Consider calling
+                            //    Activity#requestPermissions
+                            // here to request the missing permissions, and then overriding
+                            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                            //                                          int[] grantResults)
+                            // to handle the case where the user grants the permission. See the documentation
+                            // for Activity#requestPermissions for more details.
+                            return;
+                        }
                         startActivity(callIntent);
                     }
                 } catch (ActivityNotFoundException activityException) {
@@ -173,6 +182,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
         // second call button
         button2.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
                 EditText number2TextField = (EditText) findViewById(R.id.number2);
@@ -184,11 +194,21 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                     callIntent.setData((Uri.parse(number2)));
 
                     if (callIntent.resolveActivity(getPackageManager()) != null) {
+                        if (checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                            // TODO: Consider calling
+                            //    Activity#requestPermissions
+                            Toast.makeText(getApplicationContext(),"Please allow permissions for call in your app settings",Toast.LENGTH_LONG);
+                            // here to request the missing permissions, and then overriding
+                            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                            //                                          int[] grantResults)
+                            // to handle the case where the user grants the permission. See the documentation
+                            // for Activity#requestPermissions for more details.
+                            return;
+                        }
                         startActivity(callIntent);
                     }
 
                 } catch (ActivityNotFoundException activityException) {
-
                 }
             }
         });
@@ -215,7 +235,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 // "can come at your convenient time for pick up of your finished design."+
                 // "You can also call us or reply this mail, if you would like home delivery of your dress"
 
-                mailIntent.putExtra(Intent.EXTRA_TEXT, "Ajoke Couture\n 080555343422");
+                mailIntent.putExtra(Intent.EXTRA_TEXT, "Company Name\n Phone Number");
 
                 if (mailIntent.resolveActivity(getPackageManager()) != null) {
                     startActivity(mailIntent);
@@ -512,7 +532,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 + "Email: " + mail + ",\n"
                 + "Phone: " + number + ",\n"
                 + getString(R.string.measurement)
-                + getString(R.string.boss) + boss + ",\t"
+                + getString(R.string.burst) + boss + ",\t"
                 + getString(R.string.waist) + waist + ",\t"
                 + getString(R.string.hip) + hip + ",\t"
                 + getString(R.string.female_shoulder) + shoulder + ",\t"

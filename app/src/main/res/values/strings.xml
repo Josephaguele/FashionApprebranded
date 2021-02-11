@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Fashion App</string>
+    <string name="app_name">Tailors Notepad</string>
 
     <!-- Label for editor menu option to save pet and leave editor [CHAR LIMIT=20] -->
     <string name="action_save">Save</string>
@@ -51,13 +51,18 @@
     <string name="long_sleeve_length">"Long Sleeve Length: "</string>
     <string name="hip">Hip:</string>
     <string name="waist">"Waist: "</string>
-    <string name="boss">"Boss: "</string>
+    <string name="burst">"Burst: "</string>
     <string name="measurement">Measurement details are:\n</string>
     <string name="ajoke_ade_couture">AJOKE ADE COUTURE\n</string>
     <string name="balance_payment">balance</string>
     <string name="send_sms">SMS 1</string>
     <string name="client">Clients database</string>
     <string name="search_client">Search client database</string>
+    <string name="kaftan_length">Kaftan length</string>
+    <string name="date">14/07/2017</string>
+    <string name="cost">Cost:</string>
+    <string name="address">23, Adeola Odeku, V.I, Lagos</string>
+    <string name="ph_no">08063495087</string>
 
 
 </resources>

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <!-- Layout for the editor -->
@@ -348,7 +347,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <!-- Boss field -->
+                <!-- Burst field -->
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_boss"
                     android:layout_width="match_parent"
@@ -356,7 +355,7 @@
                     android:paddingBottom="18dp"
                     android:background="#FFFFFF"
                     android:fontFamily="sans-serif-light"
-                    android:hint="Boss"
+                    android:hint="@string/burst"
                     android:inputType="phone"
                     android:digits="01234567890*+-.#" />
             </com.google.android.material.textfield.TextInputLayout>

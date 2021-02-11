@@ -1,9 +1,9 @@
-package com.example.android.fashionhome.data;
+package com.chupaj.android.fashionhome.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.example.android.fashionhome.data.ClientContract.ClientEntry;
+import com.chupaj.android.fashionhome.data.ClientContract.ClientEntry;
 
 /**
  * Created by AGUELE OSEKUEMEN JOE on 6/14/2017.

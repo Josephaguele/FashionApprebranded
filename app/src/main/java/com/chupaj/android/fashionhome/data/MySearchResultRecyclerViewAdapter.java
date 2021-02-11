@@ -1,4 +1,4 @@
-package com.example.android.fashionhome.data;
+package com.chupaj.android.fashionhome.data;
 
 import android.content.ContentUris;
 import android.database.Cursor;
@@ -8,15 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.android.fashionhome.R;
+import com.chupaj.android.fashionhome.R;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_ADDRESS;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_NAME;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.CONTENT_URI;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry._ID;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_ADDRESS;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_NAME;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.CONTENT_URI;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry._ID;
 
 public class MySearchResultRecyclerViewAdapter
         extends RecyclerView.Adapter<MySearchResultRecyclerViewAdapter.ViewHolder> {

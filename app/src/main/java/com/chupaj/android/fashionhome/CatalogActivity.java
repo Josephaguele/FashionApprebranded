@@ -1,4 +1,4 @@
-package com.example.android.fashionhome;
+package com.chupaj.android.fashionhome;
 
 import android.app.LoaderManager;
 import android.app.SearchManager;
@@ -12,7 +12,7 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,62 +25,51 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.Toast;
 
-import com.example.android.fashionhome.data.ClientContract.ClientEntry;
-import com.example.android.fashionhome.data.ClientCursorAdapter;
-import com.example.android.fashionhome.data.ClientDbHelper;
-import com.example.android.fashionhome.data.DbExportImport;
+
+import com.chupaj.android.fashionhome.data.ClientContract.ClientEntry;
+import com.chupaj.android.fashionhome.data.ClientCursorAdapter;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.channels.FileChannel;
 
-import static android.R.attr.data;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 import static android.os.Environment.getExternalStorageDirectory;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.ADVANCE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.AMOUNT;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_ANKLE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_BELLY;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_BLOUSE_LENGTH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CAFTAN_LENGTH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CALF;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CHEST;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_ADDRESS;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_BOSS;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_GENDER;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_NAME;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_NUMBER;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_NUMBER2;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_STYLE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_WAIST;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_DATE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_EMAIL;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALELONGSLEEVE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALESHORTSLEEVE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALE_SHOULDER;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_HIP;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_LS;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_SHOULDER;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_SS;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_NECK;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_SKIRT_LENGTH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_THIGH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TOP;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TOP_LENGTH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TROUSER_LENGTH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_WAIST;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.GENDER_FEMALE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry._ID;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.CONTENT_URI;
-import static com.example.android.fashionhome.data.ClientContract.PATH_CLIENTS;
-import static com.example.android.fashionhome.data.ClientDbHelper.DATABASE_NAME;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.ADVANCE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.AMOUNT;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_ANKLE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_BELLY;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_BLOUSE_LENGTH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CAFTAN_LENGTH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CALF;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CHEST;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_ADDRESS;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_BOSS;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_GENDER;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_NAME;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_NUMBER;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_NUMBER2;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_STYLE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_WAIST;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_DATE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_EMAIL;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALELONGSLEEVE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALESHORTSLEEVE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALE_SHOULDER;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_HIP;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_LS;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_SHOULDER;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_SS;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_NECK;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_SKIRT_LENGTH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_THIGH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TOP;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TOP_LENGTH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TROUSER_LENGTH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_WAIST;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.GENDER_FEMALE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry._ID;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.CONTENT_URI;
 
 /**
  * Created by AGUELE OSEKUEMEN JOE on 6/13/2017.
@@ -118,7 +107,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
 //////////////////////////////
 
         // Setup FAB to open EditorActivity
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,7 +117,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         });
 
         // FInd the listView which will be populated with the client data
-        ListView clientListView = (ListView) findViewById(R.id.list);
+        ListView clientListView = findViewById(R.id.list);
 
         //Find and set empty view on the ListView, so that it only shows when the list has 0 items.
         View emptyView = findViewById(R.id.empty_view);

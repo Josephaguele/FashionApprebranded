@@ -1,4 +1,4 @@
-package com.example.android.fashionhome.data;
+package com.chupaj.android.fashionhome.data;
 
 import android.content.ContentResolver;
 import android.net.Uri;
@@ -17,7 +17,7 @@ public final class ClientContract {
      * content authority is the package name for the app, which is guaranteed to be unique on the
      * device.
      */
-    public static final String CONTENT_AUTHORITY = "com.example.android.fashionhome";
+    public static final String CONTENT_AUTHORITY = "com.chupaj.android.fashionhome";
     // Use CONTENT_AUTHORITY to create the base of all URI's which apps will use to contact
     // the content provider
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);

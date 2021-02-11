@@ -18,7 +18,8 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="sans-serif-black"
+
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="#000000"
             tools:text="Clara Ojeikere" />
@@ -39,7 +40,7 @@
             android:fontFamily="sans-serif"
             android:textAppearance="?android:textAppearanceSmall"
             android:textColor="#615b5e"
-            tools:text="08063495087" />
+            tools:text="@string/ph_no" />
     </LinearLayout>
 
     <LinearLayout
@@ -56,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
             android:textAppearance="?android:textAppearanceSmall"
-            tools:text="23, Adeola Odeku, V.I, Lagos" />
+            tools:text="@string/address" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -67,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
-                android:text="Cost:"
+                android:text="@string/cost"
                 android:textColor="#000000"
                 android:textSize="12sp" />
 
@@ -90,47 +91,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="1dp"
-            android:text="14/07/2017"
+            android:text="@string/date"
             android:textColor="#b2999b9b"
             android:textSize="10sp" />
 
-        <!--
-        <TextView
-             android:id="@+id/advance"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:textSize="14sp"
-             android:fontFamily="serif"
-             android:textColor="#0bdc81"
-             tools:text="10,000.00" />
-
-
-
-     </LinearLayout>
-     <LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:orientation="horizontal">
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginRight="1dp"
-             android:text="Balance:"
-             android:textColor="#000000"
-             android:textSize="14sp" />
-
-         <TextView
-             android:id="@+id/balance"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:textSize="14sp"
-             android:fontFamily="serif"
-             android:textColor="#dc200b"
-             tools:text="10,000.00" />
-
-
-     </LinearLayout>     -->
 
 
     </LinearLayout>

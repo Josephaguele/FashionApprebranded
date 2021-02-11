@@ -1,15 +1,11 @@
-package com.example.android.fashionhome;
+package com.chupaj.android.fashionhome;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-
-import static android.icu.text.RelativeDateTimeFormatter.Direction.THIS;
-import static android.os.Build.VERSION_CODES.M;
 
 /**
  * Created by AGUELE OSEKUEMEN JOE on 6/21/2017.

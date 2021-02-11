@@ -1,4 +1,4 @@
-package com.example.android.fashionhome.data;
+package com.chupaj.android.fashionhome.data;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -6,19 +6,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Environment;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
-import com.example.android.fashionhome.data.ClientContract.ClientEntry;
+import com.chupaj.android.fashionhome.data.ClientContract.ClientEntry;
 
-import static com.example.android.fashionhome.data.ClientContract.CONTENT_AUTHORITY;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.TABLE_NAME;
-import static com.example.android.fashionhome.data.ClientDbHelper.DATABASE_NAME;
-import static java.security.AccessController.getContext;
+import static com.chupaj.android.fashionhome.data.ClientContract.CONTENT_AUTHORITY;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.TABLE_NAME;
+import static com.chupaj.android.fashionhome.data.ClientDbHelper.DATABASE_NAME;
 
 /**
  * Created by AGUELE OSEKUEMEN JOE on 9/5/2017.
@@ -26,13 +24,13 @@ import static java.security.AccessController.getContext;
 
 public class DbExportImport {
 
-    public static final String TAG = DbExportImport.class.getName();
+ /*   public static final String TAG = DbExportImport.class.getName();
 
-    /** Directory that files are to be read from and written to **/
+    *//** Directory that files are to be read from and written to **//*
     protected static final File DATABASE_DIRECTORY =
             new File(Environment.getExternalStorageDirectory(),"Fashion Home");
 
-    /** File path of Db to be imported **/
+    *//** File path of Db to be imported **//*
     protected static final File IMPORT_FILE =
             new File(DATABASE_DIRECTORY,"data.txt");
 
@@ -40,14 +38,14 @@ public class DbExportImport {
     //public static final String DATABASE_NAME = "fashion.db"; //
     public static final String DATABASE_TABLE = "clients"; //TABLE NAME
 
-    /** Contains: /data/data/com.example.app/databases/example.db **/
+    *//** Contains: /data/data/com.example.app/databases/example.db **//*
     private static final File DATA_DIRECTORY_DATABASE =
             new File(Environment.getDataDirectory() +
                     "/data/" + CONTENT_AUTHORITY +
                     "/databases/" + DATABASE_NAME );
 
-    /** Saves the application database to the
-     * export directory under MyDb.db **/
+    *//** Saves the application database to the
+     * export directory under MyDb.db **//*
     public  static  boolean exportDb(){
         if( ! SdIsPresent() ) return false;
 
@@ -73,8 +71,8 @@ public class DbExportImport {
 
     }
 
-    /** Replaces current database with the IMPORT_FILE if
-     * import database is valid and of the correct type **/
+    *//** Replaces current database with the IMPORT_FILE if
+     * import database is valid and of the correct type **//*
     public static boolean restoreDb(){
         if( ! SdIsPresent() ) return false;
 
@@ -98,7 +96,7 @@ public class DbExportImport {
         }
     }
 
-    /** Imports the file at IMPORT_FILE **/
+    *//** Imports the file at IMPORT_FILE **//*
      public static boolean importIntoDb(Context ctx){
         if( ! SdIsPresent() ) return false;
 
@@ -151,9 +149,9 @@ public class DbExportImport {
         return true;
     }
 
-    /** Given an SQLite database file, this checks if the file
+    *//** Given an SQLite database file, this checks if the file
      * is a valid SQLite database and that it contains all the
-     * columns represented by DbAdapter.ALL_COLUMN_KEYS **/
+     * columns represented by DbAdapter.ALL_COLUMN_KEYS **//*
     protected static boolean checkDbIsValid( File db ){
         try{
             SQLiteDatabase sqlDb = SQLiteDatabase.openDatabase
@@ -201,10 +199,10 @@ public class DbExportImport {
         }
     }
 
-    /** Returns whether an SD card is present and writable **/
+    *//** Returns whether an SD card is present and writable **//*
     public static boolean SdIsPresent() {
         return Environment.getExternalStorageState().equals(
                 Environment.MEDIA_MOUNTED);
-    }
+    }*/
 }
 

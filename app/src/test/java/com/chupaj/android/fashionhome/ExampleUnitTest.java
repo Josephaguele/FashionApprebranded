@@ -1,4 +1,4 @@
-package com.example.android.fashionhome;
+package com.chupaj.android.fashionhome;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.example.android.fashionhome.data;
+package com.chupaj.android.fashionhome.data;
 
 import android.app.SearchManager;
 import android.content.ContentProvider;
@@ -12,40 +12,38 @@ import android.net.Uri;
 
 import android.util.Log;
 
-import com.example.android.fashionhome.data.ClientContract.ClientEntry;
+import com.chupaj.android.fashionhome.data.ClientContract.ClientEntry;
 
 import java.util.HashMap;
 
-import static android.app.SearchManager.SUGGEST_MIME_TYPE;
 import static android.app.SearchManager.SUGGEST_URI_PATH_QUERY;
-import static android.app.SearchManager.SUGGEST_URI_PATH_SHORTCUT;
-import static com.example.android.fashionhome.data.ClientContract.CONTENT_AUTHORITY;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.ADVANCE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.AMOUNT;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_ANKLE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_BELLY;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_BLOUSE_LENGTH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CAFTAN_LENGTH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CALF;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CHEST;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_BOSS;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_NAME;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_WAIST;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_DATE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALELONGSLEEVE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALESHORTSLEEVE;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALE_SHOULDER;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_HIP;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_LS;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_SHOULDER;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_SS;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_NECK;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_SKIRT_LENGTH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_THIGH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TOP;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TOP_LENGTH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TROUSER_LENGTH;
-import static com.example.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_WAIST;
+import static com.chupaj.android.fashionhome.data.ClientContract.CONTENT_AUTHORITY;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.ADVANCE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.AMOUNT;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_ANKLE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_BELLY;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_BLOUSE_LENGTH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CAFTAN_LENGTH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CALF;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CHEST;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_BOSS;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_NAME;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_CLIENT_WAIST;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_DATE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALELONGSLEEVE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALESHORTSLEEVE;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_FEMALE_SHOULDER;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_HIP;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_LS;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_SHOULDER;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_MALE_SS;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_NECK;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_SKIRT_LENGTH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_THIGH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TOP;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TOP_LENGTH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_TROUSER_LENGTH;
+import static com.chupaj.android.fashionhome.data.ClientContract.ClientEntry.COLUMN_WAIST;
 
 /**
  * Created by AGUELE OSEKUEMEN JOE on 6/13/2017.
@@ -93,18 +91,18 @@ public class ClientProvider extends ContentProvider {
         // should recognize. All paths added to the UriMatcher have a corresponding code to return
         // when a match is found.
 
-        // The content URI of the form "content://com.example.android.fashionhome/clients" will map to the
+        // The content URI of the form "content://com.chupaj.android.fashionhome/clients" will map to the
         // integer code {@link #CLIENTS}. This URI is used to provide access to MULTIPLE rows
         // of the clients table.
         sUriMatcher.addURI(CONTENT_AUTHORITY, ClientContract.PATH_CLIENTS, CLIENTS);
 
-        // The content URI of the form "content://com.example.android.fashionhome/clients/#" will map to the
+        // The content URI of the form "content://com.chupaj.android.fashionhome/clients/#" will map to the
         // integer code {@link #CLIENT_ID}. This URI is used to provide access to ONE single row
         // of the clients table.
         //
         // In this case, the "#" wildcard is used where "#" can be substituted for an integer.
-        // For example, "content://com.example.android.fashionhome/clients/3" matches, but
-        // "content://com.example.android.fashionhome/clients" (without a number at the end) doesn't match.
+        // For example, "content://com.chupaj.android.fashionhome/clients/3" matches, but
+        // "content://com.chupaj.android.fashionhome/clients" (without a number at the end) doesn't match.
         sUriMatcher.addURI(CONTENT_AUTHORITY, ClientContract.PATH_CLIENTS + "/#", CLIENT_ID);
     }
 

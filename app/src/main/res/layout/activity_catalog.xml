@@ -66,6 +66,6 @@
         android:layout_alignParentRight="true"
         android:layout_margin="16dp"
         android:src="@drawable/ic_person_add_black_48dp"
-        app:backgroundTint="@android:color/holo_red_dark"
+        app:backgroundTint="@android:color/holo_blue_light"
         app:elevation="7dp" />
 </RelativeLayout>
